@@ -189,6 +189,11 @@ public class SerialTest {
     }
 
 
+    /**
+     * 性能对比
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     @Test
     public void testJavaPerformance() throws IOException, ClassNotFoundException {
         EasyRandom easyRandom = new EasyRandom();
@@ -238,18 +243,35 @@ public class SerialTest {
         kryoSerialData.setGetByteOver(getCurrentTime());
         ByteArrayInputStream inputStream3 = new ByteArrayInputStream(bytes3);
 
-        Set<User> personSetKryo = KryoSerialUtil.readObject(inputStream3,HashSet.class);
+        Set<User> personSetKryo = KryoSerialUtil.readObject(inputStream3, HashSet.class);
         kryoSerialData.setUnSerialOver(getCurrentTime());
         System.out.println("Kryo:" + kryoSerialData);
         System.out.println("--------------");
+
+        // ----------kryo序列化 自定义序列化器--------
+        SerialData kryoSerialData2 = new SerialData();
+        kryoSerialData2.setStart(getCurrentTime());
+        ByteArrayOutputStream outputStream4 = new ByteArrayOutputStream();
+        KryoSerialUtil.writeSet(outputStream4, userSet);
+        kryoSerialData2.setSerialOver(getCurrentTime());
+        byte[] bytes4 = outputStream4.toByteArray();
+        kryoSerialData2.setBytes(bytes4.length);
+        kryoSerialData2.setGetByteOver(getCurrentTime());
+        ByteArrayInputStream inputStream4 = new ByteArrayInputStream(bytes4);
+
+        Set<User> personSetKryo2 = KryoSerialUtil.readSet(inputStream4, HashSet.class);
+        kryoSerialData2.setUnSerialOver(getCurrentTime());
+        System.out.println("kryo注册:" + kryoSerialData2);
+        System.out.println("--------------");
+
 
         // ----------JSON序列化------------
         SerialData gSONSerialData = new SerialData();
         gSONSerialData.setStart(getCurrentTime());
         String jsonString = GSONSerialUtil.getJsonString(userSet);
         gSONSerialData.setSerialOver(getCurrentTime());
-        byte[] bytes4 = jsonString.getBytes();
-        gSONSerialData.setBytes(bytes4.length);
+        byte[] bytes5 = jsonString.getBytes();
+        gSONSerialData.setBytes(bytes5.length);
         gSONSerialData.setGetByteOver(getCurrentTime());
         Set<User> persongSON = GSONSerialUtil.parseJson(jsonString, userSet.getClass());
         gSONSerialData.setUnSerialOver(getCurrentTime());
