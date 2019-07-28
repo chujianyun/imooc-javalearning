@@ -1,0 +1,10 @@
+package com.imooc.basic.nullpoint;
+
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+
+public class OperationTest {
+
+
+}
