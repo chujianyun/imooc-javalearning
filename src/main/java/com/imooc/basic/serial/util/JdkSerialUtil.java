@@ -8,18 +8,17 @@ import java.io.*;
 public class JdkSerialUtil {
 
     public static <T> void writeObject(File file, T data) throws IOException {
-        FileOutputStream out = new FileOutputStream(file);
-        ObjectOutputStream objectOutputStream = new ObjectOutputStream(out);
-        objectOutputStream.writeObject(data);
-        objectOutputStream.flush();
-        objectOutputStream.close();
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(file));) {
+            objectOutputStream.writeObject(data);
+            objectOutputStream.flush();
+        }
     }
 
     public static <T> void writeObject(ByteArrayOutputStream outputStream, T data) throws IOException {
-        ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
-        objectOutputStream.writeObject(data);
-        objectOutputStream.flush();
-        objectOutputStream.close();
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);) {
+            objectOutputStream.writeObject(data);
+            objectOutputStream.flush();
+        }
     }
 
     public static <T> T readObject(File file) throws IOException, ClassNotFoundException {

@@ -57,6 +57,7 @@ public class KryoManager {
         }
     }
 
+
     public static Object[] readObjects(InputStream is) {
         try {
             Input input = new Input(is);
