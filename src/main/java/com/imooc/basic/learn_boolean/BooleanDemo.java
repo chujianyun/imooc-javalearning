@@ -9,7 +9,7 @@ public class BooleanDemo {
     }
 
     private static boolean and(boolean... booleans) {
-        System.out.println("boolean");
+
         for (boolean b : booleans) {
             if (!b) {
                 return false;

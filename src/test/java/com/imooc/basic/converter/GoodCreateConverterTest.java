@@ -4,9 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.imooc.basic.nullpoint.GoodCreateDTO;
 import com.imooc.basic.nullpoint.GoodCreateParam;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
-
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
 
 @Slf4j
 public class GoodCreateConverterTest {

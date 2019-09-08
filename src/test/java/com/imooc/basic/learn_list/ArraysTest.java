@@ -1,6 +1,7 @@
 package com.imooc.basic.learn_list;
 
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;

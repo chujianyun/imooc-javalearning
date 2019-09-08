@@ -1,16 +1,11 @@
 package com.imooc.basic.clone;
 
-import com.google.gson.Gson;
 import com.imooc.basic.clone.util.CloneUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.SerializationUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 @Slf4j
 public class CloneTest {

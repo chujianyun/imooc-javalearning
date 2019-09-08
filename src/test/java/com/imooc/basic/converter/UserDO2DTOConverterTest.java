@@ -11,13 +11,14 @@ import org.apache.commons.beanutils.PropertyUtils;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 import org.jeasy.random.EasyRandom;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class UserDO2DTOConverterTest {
 
@@ -29,7 +30,7 @@ public class UserDO2DTOConverterTest {
 
     private MapperFactory mapperFactory = new DefaultMapperFactory.Builder().build();
 
-    @Before
+    @BeforeAll
     public void init() {
         EasyRandom easyRandom = new EasyRandom();
         userDOs = easyRandom
@@ -103,9 +104,9 @@ public class UserDO2DTOConverterTest {
 
 
     private void checkEquals(UserDO userDO, UserDTO userDTO) {
-        Assert.assertEquals(userDO.getName(), userDTO.getName());
-        Assert.assertEquals(userDO.getAge(), userDTO.getAge());
-        Assert.assertEquals(userDO.getNickName(), userDTO.getNickName());
+        assertEquals(userDO.getName(), userDTO.getName());
+        assertEquals(userDO.getAge(), userDTO.getAge());
+        assertEquals(userDO.getNickName(), userDTO.getNickName());
     }
 
 }

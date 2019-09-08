@@ -3,14 +3,15 @@ package com.imooc.basic.deprecated;
 import com.alibaba.fastjson.JSON;
 import com.google.common.base.Charsets;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * 第一章  五节 过时类的处理方式
@@ -65,8 +66,8 @@ public class DeprecatedTest {
         String decodeNew = URLDecoder.decode(encodeNew, Charsets.UTF_8.name());
 
         // 结果对比
-        Assert.assertEquals(encodeOrigin, encodeNew);
-        Assert.assertEquals(decodeOrigin, decodeNew);
+        assertEquals(encodeOrigin, encodeNew);
+        assertEquals(decodeOrigin, decodeNew);
     }
 
     @Test
@@ -90,6 +91,7 @@ public class DeprecatedTest {
         orderItemParamList.add(orderItemParam2);
         orderCreateParamNew.setOrderItemParams(orderItemParamList);
 
-        Assert.assertEquals(JSON.toJSONString(orderCreateParamNew.getOrderItemParams()), orderCreateParamOrigin.getOrderItemDetail());
+
+        assertEquals(JSON.toJSONString(orderCreateParamNew.getOrderItemParams()), orderCreateParamOrigin.getOrderItemDetail());
     }
 }
