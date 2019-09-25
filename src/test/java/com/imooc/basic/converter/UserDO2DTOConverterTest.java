@@ -22,13 +22,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class UserDO2DTOConverterTest {
 
-    private Set<UserDO> userDOs;
 
     private BeanCopier beanCopier = BeanCopier.create(UserDO.class, UserDTO.class, false);
 
     private Mapper mapper = new DozerBeanMapper();
 
     private MapperFactory mapperFactory = new DefaultMapperFactory.Builder().build();
+
+    private Set<UserDO> userDOs;
 
     @BeforeAll
     public void init() {
