@@ -1,23 +1,14 @@
 package com.imooc.basic.learn_test;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.util.IOUtils;
-import com.github.javafaker.Artist;
-import com.github.javafaker.Book;
 import com.github.javafaker.Faker;
-import com.github.javafaker.Name;
-import com.imooc.basic.learn_test.PdfAttribute;
-
 import com.imooc.basic.util.ResourceUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.jeasy.random.EasyRandom;
-import org.jeasy.random.EasyRandomParameters;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.util.ResourceUtils;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -36,6 +27,15 @@ public class PdfUtilTest {
         }
     }
 
+    private List<String> mockString() {
+        List<java.lang.String> mockStrList = new ArrayList<>();
+        final int size = 10;
+        for (int i = 0; i < size; i++) {
+            mockStrList.add("something" + i);
+        }
+        return mockStrList;
+    }
+
     // 构造 faker对象，指定语言
     private static Faker faker = new Faker(new Locale("zh-CN"));
 
@@ -45,7 +45,7 @@ public class PdfUtilTest {
     @Test
     public void testPdfData() {
         // 构造测试数据
-        PdfData pdfData = ResourceUtil.parseJson(PdfData.class,"/data/pdfData.json");
+        PdfData pdfData = easyRandom.nextObject(PdfData.class);
         System.out.println(JSON.toJSONString(pdfData));
 
         log.info("构造的数据:{}", JSON.toJSONString(pdfData));
@@ -54,6 +54,8 @@ public class PdfUtilTest {
         Boolean export = PdfUtil.export(pdfData);
         Assert.assertTrue(export);
     }
+
+
 
 /*    @Test
     public void test() {
@@ -67,6 +69,7 @@ public class PdfUtilTest {
    /* private PdfData mockPdfData() {
         // 使用插件填充PdfData
         PdfData pdfData = new PdfData();
+
         pdfData.setId(0);
         pdfData.setName("some");
         pdfData.setWaterMark("test");

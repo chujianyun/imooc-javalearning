@@ -1,0 +1,21 @@
+package com.imooc.basic.learn_test;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class Item {
+
+    private String id;
+
+    private String name;
+
+    private String desc;
+
+    private Integer stock;
+
+    private Boolean onSell;
+}

@@ -1,5 +1,8 @@
 package com.imooc.basic.converter;
 
+import java.time.Instant;
+import java.util.Date;
+
 import com.imooc.basic.converter.entity.UserDO;
 import com.imooc.basic.converter.entity.UserDTO;
 
@@ -26,4 +29,14 @@ public class UserConverter {
     }
 
     // 转换成VO等等
+
+    private UserDO mockUserDO() {
+        UserDO userDO = new UserDO();
+        userDO.setId(0L);
+        userDO.setName("测试");
+        userDO.setAge(0);
+        userDO.setNickName("test");
+        userDO.setBirthDay(Date.from(Instant.now()));
+        return userDO;
+    }
 }

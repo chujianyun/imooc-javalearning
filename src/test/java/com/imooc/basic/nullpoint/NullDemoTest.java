@@ -20,4 +20,19 @@ public class NullDemoTest {
         String param = null;
         NullDemo.doSomething7(param);
     }
+
+    @Test
+    public void mock() {
+
+      /*  if (Boolean.TRUE.equals(someRemoteCall())) {
+             // 业务代码
+        }*/
+
+    }
+
+  /*  private Boolean someRemoteCall() {
+        // 可能返回null
+
+    }*/
 }
+
