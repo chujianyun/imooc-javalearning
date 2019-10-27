@@ -11,8 +11,10 @@ import org.apache.commons.beanutils.PropertyUtils;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 import org.jeasy.random.EasyRandom;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
@@ -31,12 +33,20 @@ public class UserDO2DTOConverterTest {
 
     private Set<UserDO> userDOs;
 
-    @BeforeAll
+    @Before
     public void init() {
         EasyRandom easyRandom = new EasyRandom();
         userDOs = easyRandom
                 .objects(UserDO.class, 100000)
                 .collect(Collectors.toSet());
+    }
+
+    @Test
+    public void mapStructCopyTest() {
+        for (UserDO userDO : userDOs) {
+            UserDTO userDTO = UserMapper.INSTANCE.userDo2Dto(userDO);
+            checkEquals(userDO, userDTO);
+        }
     }
 
     @Test

@@ -1,5 +1,7 @@
 package com.imooc.basic.learn_enum;
 
+import lombok.Getter;
+
 public enum CoinEnum {
     PENNY(1), NICKEL(5), DIME(10), QUARTER(25)/*,NEWONE(50)*/;
 
@@ -7,6 +9,7 @@ public enum CoinEnum {
         this.value = value;
     }
 
+    @Getter
     private final int value;
 
     public int value() {

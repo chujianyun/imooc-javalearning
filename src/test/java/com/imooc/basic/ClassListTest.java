@@ -16,7 +16,7 @@ public class ClassListTest {
     @org.junit.Test
     public void test() {
 
-        String prefix = "/Users/liuwangyang/Library/Mobile Documents/com~apple~CloudDocs/资源/知识付费/慕课网/我的Java学习和趟坑之路/";
+        String prefix = "/Users/liuwangyang/Documents/教程/慕课网/我的Java学习和趟坑之路/";
 
         List<String> originDirs = Stream.of(new File(prefix).listFiles())
                 .filter(File::isDirectory)
