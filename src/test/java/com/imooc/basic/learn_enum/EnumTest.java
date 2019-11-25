@@ -4,14 +4,17 @@ package com.imooc.basic.learn_enum;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.SerializationException;
 import org.apache.commons.lang3.SerializationUtils;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Objects;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static junit.framework.TestCase.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 @Slf4j
 public class EnumTest {

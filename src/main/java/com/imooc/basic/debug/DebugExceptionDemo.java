@@ -2,7 +2,7 @@ package com.imooc.basic.debug;
 
 import org.apache.commons.lang3.RandomUtils;
 
-public class DebugDemo {
+public class DebugExceptionDemo {
 
     public static void main(String[] args) {
         for (int i = 0; i < 100; i++) {

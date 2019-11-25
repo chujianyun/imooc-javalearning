@@ -15,8 +15,9 @@ public class SetTest {
     List<String> data;
 
     @BeforeAll
-    public void init() {
+    public void init() throws InterruptedException {
 
+        data.wait();
         ListRandomizer<String> listRandomizer = new ListRandomizer<>(new StringRandomizer(10, 100, 1000), 10000);
         data = listRandomizer.getRandomValue();
     }

@@ -1,4 +1,4 @@
-package ch.qos.logback.demo.learn;
+package com.imooc.basic.learnlog;
 
 
 import org.apache.logging.log4j.LogManager;
