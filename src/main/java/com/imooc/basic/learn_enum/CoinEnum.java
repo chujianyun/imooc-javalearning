@@ -2,6 +2,10 @@ package com.imooc.basic.learn_enum;
 
 import lombok.Getter;
 
+import java.util.HashMap;
+import java.util.Map;
+
+@Getter
 public enum CoinEnum {
     PENNY(1), NICKEL(5), DIME(10), QUARTER(25)/*,NEWONE(50)*/;
 
@@ -9,36 +13,24 @@ public enum CoinEnum {
         this.value = value;
     }
 
-    @Getter
     private final int value;
 
     public int value() {
         return value;
     }
 
-
-    private static CoinEnum[] $VALUES2;
+    private static final Map<Integer, CoinEnum> cache = new HashMap<>();
 
     static {
-        $VALUES2 = new CoinEnum[4];
-        $VALUES2[0] = PENNY;
-        $VALUES2[1] = NICKEL;
-        $VALUES2[2] = DIME;
-        $VALUES2[3] = QUARTER;
+        for (CoinEnum coinEnum : CoinEnum.values()) {
+            cache.put(coinEnum.getValue(), coinEnum);
+        }
     }
 
-
-
-    public static CoinEnum getByValue(int value) {
-        CoinEnum[] values = CoinEnum.values();
-        values[0] = CoinEnum.QUARTER;
-
-        //CoinEnum some = PENNY;
-        for (CoinEnum coinEnum : CoinEnum.values()) {
-            if (coinEnum.value == value) {
-                return coinEnum;
-            }
-        }
-        return null;
+    public static CoinEnum getEnum(int value) {
+        return cache.getOrDefault(value, null);
     }
 }
+
+
+

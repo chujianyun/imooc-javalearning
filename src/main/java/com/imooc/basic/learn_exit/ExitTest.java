@@ -8,7 +8,9 @@ public class ExitTest {
         System.setSecurityManager(new SecurityManager() {
             @Override
             public void checkExit(int status) {
-                throw new SecurityException("不允许退出");
+                if(status ==2){
+                    throw new SecurityException("不允许退出");
+                }
             }
         });
 
